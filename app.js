@@ -6,7 +6,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const { PORT, BASE_PATH, MONGODB_URI } = require('./config');
+const { PORT, BASE_PATH /* MONGODB_URI */ } = require('./config');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -20,17 +20,23 @@ app.use(cookieParser());
 app.use(limiter);
 app.use(helmet());
 
-mongoose.connect(MONGODB_URI, {
+/* mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+})
+  .then(() => console.log('база подключена'))
+  .catch((err) => console.log(err)); */
+
+mongoose.connect('mongodb://127.0.0.1/bitfilmsdb', {
   useNewUrlParser: true,
 })
   .then(() => console.log('база подключена'))
   .catch((err) => console.log(err));
 
 const corsOptions = {
-  origin: ['http://mesto.lazarenkoea.nomoredomains.monster',
-    'https://api.mesto.lazarenkoea.nomoredomains.rocks',
-    'http://api.mesto.lazarenkoea.nomoredomains.rocks',
-    'https://mesto.lazarenkoea.nomoredomains.monster',
+  origin: [/* 'http://mesto.lazarenkoea.nomoredomains.monster', */
+    'https://api.movies.lazarenkoea.nomoredomains.rocks',
+    'http://api.movies.lazarenkoea.nomoredomains.rocks',
+    /* 'https://mesto.lazarenkoea.nomoredomains.monster', */
     'http://localhost:3000',
     'https://localhost:3000'],
   credentials: true,
