@@ -27,10 +27,10 @@ mongoose.connect(MONGODB_URI, {
   .catch((err) => console.log(err));
 
 const corsOptions = {
-  origin: [/* 'http://mesto.lazarenkoea.nomoredomains.monster', */
-    'https://api.movie.lazarenkoea.nomoredomains.rocks',
-    'http://api.movie.lazarenkoea.nomoredomains.rocks',
-    /* 'https://mesto.lazarenkoea.nomoredomains.monster', */
+  origin: ['https://movies.lazarenkoea.nomoredomains.xyz/',
+    'https://api.movies.lazarenkoea.nomoredomains.rocks',
+    'http://api.movies.lazarenkoea.nomoredomains.rocks',
+    'http://movies.lazarenkoea.nomoredomains.xyz/',
     'http://localhost:3000',
     'https://localhost:3000'],
   credentials: true,
